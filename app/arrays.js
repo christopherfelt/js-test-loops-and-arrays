@@ -208,11 +208,11 @@ let theBand = {
 function bandMemberDetails(name) {
   let member = theBand.members.find((element) => element.name == name);
   if (!member) {
-    let regexString = name + "*";
+    let regexString = name.toLowerCase() + "*";
     let regex = RegExp(regexString);
     let membersArray = theBand.members;
     for (let i = 0; i < membersArray.length; i++) {
-      let isMatch = regex.test(membersArray[i].name);
+      let isMatch = regex.test(membersArray[i].name.toLowerCase());
       if (isMatch) {
         member = membersArray[i];
         return `${member.name} is in the band and plays the ${member.instrument}`;
@@ -222,6 +222,3 @@ function bandMemberDetails(name) {
     return `${name} is in the band and plays the ${member.instrument}`;
   }
 }
-
-let thing = bandMemberDetails("riv");
-console.log(thing);
